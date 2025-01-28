@@ -6,7 +6,7 @@
 1- Install ansible in your host machine
 2- Make sure ssh is started and enable in the target machine as ansible use ssh to communicate
 
-<h2 How to use it </2>
+<h2 How to use it </h2>
 
 1-Copy the ip of the target machine in the inventory file
 2- Copy your personal ssh key into th ssh_key variable which is found in the host_vars directory
