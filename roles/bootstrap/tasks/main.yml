@@ -1,0 +1,24 @@
+  
+- name: create a simone user
+  tags: create_user
+  user:
+    name: "{{ user }}"
+    state: present
+    groups:
+      - root
+      - wheel
+
+- name: Add ssh key for simone
+  tags: add_key
+  authorized_key:
+    user: "{{ user }}"
+    key: "{{ ssh_key }}"
+
+- name: Add sudoers file for simone
+  tags: sudoers
+  copy:
+    src: /home/rocky/ansible_bootstrapping/files/sudoers_simone
+    dest: /etc/sudoers.d/simone
+    owner: root
+    group: root
+    mode: 0440

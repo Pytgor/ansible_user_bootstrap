@@ -1,0 +1,24 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Install updates for AlmaLinux
+      tags: always
+      dnf:
+        name: '*'
+        update_only: yes
+      when: ansible_distribution == "AlmaLinux"
+
+    - name: Install updates for Ubuntu
+      tags: always
+      apt:
+        upgrade: dist
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+
+- hosts: bootstrap
+  become: true
+  roles:
+     - bootstrap
